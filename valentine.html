@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Saleh 💖</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: pink;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  width: 300px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+#yes {
+  background: hotpink;
+  color: white;
+}
+
+#no {
+  background: lightgray;
+  position: absolute;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+  <h2>Saleh 💕</h2>
+  <p>Will you be my Valentine’s Day soulmate?</p>
+
+  <button id="yes">Yes 💖</button>
+  <button id="no">No 😅</button>
+</div>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+noBtn.addEventListener("mouseover", () => {
+  noBtn.style.left = Math.random() * 80 + "%";
+  noBtn.style.top = Math.random() * 80 + "%";
+});
+
+yesBtn.addEventListener("click", () => {
+  document.getElementById("card").innerHTML = `
+    <h2>💘 Thank you, Saleh! 💘</h2>
+    <p>I’m so happy you said YES 😍</p>
+    <p>I love you 💞</p>
+  `;
+});
+</script>
+
+</body>
+</html>

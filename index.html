@@ -1,53 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>For Saleh 💖</title>
-
+<meta charset="UTF-8">
+<title>Valentine Surprise 💖</title>
 <style>
 body {
   margin: 0;
   height: 100vh;
-  background: pink;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
 .card {
   background: white;
   padding: 30px;
-  border-radius: 20px;
+  border-radius: 25px;
   text-align: center;
-  width: 300px;
+  width: 320px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+  position: relative;
 }
 
+h1 { color: #ff2f68; }
+
 button {
-  padding: 10px 20px;
+  padding: 12px 20px;
   font-size: 16px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
+  margin: 10px;
 }
 
 #yes {
-  background: hotpink;
+  background: #ff2f68;
   color: white;
 }
 
 #no {
-  background: lightgray;
+  background: #ccc;
   position: absolute;
+}
+
+/* Floating hearts animation */
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 24px;
+  animation: float 4s linear infinite;
+}
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1;}
+  100% { transform: translateY(-800px) rotate(360deg); opacity: 0;}
 }
 </style>
 </head>
-
 <body>
 
 <div class="card" id="card">
-  <h2>Saleh 💕</h2>
+  <h2 id="name">[Bache Haji] 💕</h2>
   <p>Will you be my Valentine’s Day soulmate?</p>
-
   <button id="yes">Yes 💖</button>
   <button id="no">No 😅</button>
 </div>
@@ -55,19 +71,39 @@ button {
 <script>
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
+const card = document.getElementById("card");
+const nameHeader = document.getElementById("name");
 
+// Change this line to set the person's name
+let personName = "Saleh";
+nameHeader.textContent = personName + " 💕";
+
+// NO button moves
 noBtn.addEventListener("mouseover", () => {
-  noBtn.style.left = Math.random() * 80 + "%";
-  noBtn.style.top = Math.random() * 80 + "%";
+  const x = Math.random() * (window.innerWidth - 120);
+  const y = Math.random() * (window.innerHeight - 80);
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
 });
 
+// YES button shows message
 yesBtn.addEventListener("click", () => {
-  document.getElementById("card").innerHTML = `
-    <h2>💘 Thank you, Saleh! 💘</h2>
-    <p>I’m so happy you said YES 😍</p>
+  card.innerHTML = `
+    <h2>💘 Thank you, ${personName}! 💘</h2>
+    <p>You just made me the happiest person ever 😍</p>
     <p>I love you 💞</p>
   `;
 });
+
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.textContent = "❤️";
+  document.body.appendChild(heart);
+  setTimeout(() => { heart.remove(); }, 4000);
+}, 500);
 </script>
 
 </body>
